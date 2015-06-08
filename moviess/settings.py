@@ -25,7 +25,7 @@ SECRET_KEY = 'dq$32150=wdawa9y9&!up3=-le^5d_m*ob)cjsk@7&8$r6r=z7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,7 +37,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'moviess',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -75,17 +74,10 @@ WSGI_APPLICATION = 'moviess.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
+import dj_database_url
+DATABASES['default'] = dj_database_url.config()
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'shopsense',
-        'USER': 'pikachu',
-        'PASSWORD': 'pikachu'
-    }
-}
-
-
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
@@ -103,11 +95,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_ROOT = ''
+STATIC_ROOT = 'staticfiles'
 
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
+	os.path.join(BASE_DIR, 'static')
 )
 
 STATICFILES_FINDERS = ( 
