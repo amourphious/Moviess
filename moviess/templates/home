@@ -1,0 +1,149 @@
+<h1>Welcome to Moviess</h1>
+
+<h3>Movies API task to get to shopsense</h3>
+<a href='createdummy/'> Create Dummy database </a>
+<h2>Access levels to API:</h2>
+
+<ol>
+	<li>
+	<h3>User :</h3>
+
+	<ul>
+		<li>
+		<h3>only read access data..</h3>
+		</li>
+		<li>
+		<h3>&nbsp;No special parameters needed to be added to request..</h3>
+		</li>
+		<li>
+		<h3>url supported</h3>
+
+		<ul>
+			<li>movies/all/ : shows all movies</li>
+			<li>movies/&lt;movie_id&gt;/ : shows movie with given id</li>
+			<li>movies/search/?&lt;parameter&gt;&nbsp;: shows movie whcih matches the search parameters</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+	<li>
+	<h3>Admin:</h3>
+
+	<ul>
+		<li>
+		<h3>Read and Write access</h3>
+		</li>
+		<li>
+		<h3>authID get parameter necessary&nbsp;for write aceess</h3>
+		</li>
+		<li>
+		<h3>url supported</h3>
+
+		<ul>
+			<li>admin/&lt;username max_length 30 &gt; : gives authId if user present or creates a new user otherwise. Use this auth id in the below urls.</li>
+			<li>movies/update/&lt;movie_id&gt;/?authId=&lt;authId of admin&gt;&amp;&lt;parameters&gt; : changes the values of parameters for movie with id:&lt;movie_id&gt; &nbsp;</li>
+			<li>movies/add/?authId=&lt;authId of admin&gt;&amp;&lt;parameters&gt; : adds movie to db with parameters provides.&nbsp;requires all papameters</li>
+			<li>movies/delete/&lt;movie_id&gt;/?authId=&lt;authId of admin&gt;:&nbsp;deletes movie with given &lt;movie_id&gt;</li>
+			<li>apart from these can also access the user urls</li>
+		</ul>
+		</li>
+	</ul>
+	</li>
+</ol>
+
+<table align="center" border="1" cellpadding="1" cellspacing="1" style="width: 500px;">
+	<caption>Parameters supported</caption>
+	<tbody>
+		<tr>
+			<td>
+			<h3><strong>Parameter Name</strong></h3>
+			</td>
+			<td>
+			<h3><strong>Value Type</strong></h3>
+			</td>
+			<td>
+			<h3><strong>Description</strong></h3>
+			</td>
+		</tr>
+		<tr>
+			<td>name</td>
+			<td>name=Wizard of OZ</td>
+			<td>name of the movie</td>
+		</tr>
+		<tr>
+			<td>director</td>
+			<td>director=<span style="color: rgb(0, 0, 0); font-family: 'Times New Roman'; font-size: medium; line-height: normal;">Victor Fleming</span></td>
+			<td>name of director</td>
+		</tr>
+		<tr>
+			<td>rating</td>
+			<td>rating=8.0</td>
+			<td>rating of movie<br />
+			decimal number<br />
+			with upto 10<br />
+			one digit after decimal</td>
+		</tr>
+		<tr>
+			<td>rating_lte</td>
+			<td>rating_lte=8.0</td>
+			<td>rating of movie less than given<br />
+			decimal number<br />
+			with upto 10<br />
+			one digit after decimal</td>
+		</tr>
+		
+		<tr>
+			<td>rating_gte</td>
+			<td>rating_gte=8.0</td>
+			<td>rating of movie greater than given<br />
+			decimal number<br />
+			with upto 10<br />
+			one digit after decimal</td>
+		</tr>
+		
+		<tr>
+			<td>popularity</td>
+			<td>popularity=75.0</td>
+			<td><span style="line-height: 20.7999992370605px;">popularity of movie</span><br style="line-height: 20.7999992370605px;" />
+			<span style="line-height: 20.7999992370605px;">decimal number&nbsp;</span><br style="line-height: 20.7999992370605px;" />
+			<span style="line-height: 20.7999992370605px;">with upto 100</span><br style="line-height: 20.7999992370605px;" />
+			<span style="line-height: 20.7999992370605px;">one digit after decimal</span></td>
+		</tr>
+                <tr>
+			<td>popularity_lte</td>
+			<td>popularity_lte=75.0</td>
+			<td><span style="line-height: 20.7999992370605px;">popularity of movie less than given</span><br style="line-height: 20.7999992370605px;" />
+			<span style="line-height: 20.7999992370605px;">decimal number&nbsp;</span><br style="line-height: 20.7999992370605px;" />
+			<span style="line-height: 20.7999992370605px;">with upto 100</span><br style="line-height: 20.7999992370605px;" />
+			<span style="line-height: 20.7999992370605px;">one digit after decimal</span></td>
+		</tr>
+		
+		<tr>
+			<td>popularity_gte</td>
+			<td>popularity_gte=75.0</td>
+			<td><span style="line-height: 20.7999992370605px;">popularity of movie greater than given</span><br style="line-height: 20.7999992370605px;" />
+			<span style="line-height: 20.7999992370605px;">decimal number&nbsp;</span><br style="line-height: 20.7999992370605px;" />
+			<span style="line-height: 20.7999992370605px;">with upto 100</span><br style="line-height: 20.7999992370605px;" />
+			<span style="line-height: 20.7999992370605px;">one digit after decimal</span></td>
+		</tr>
+		
+		<tr>
+			<td>genre</td>
+			<td>genre=Adult,Drama</td>
+			<td>list of genre<br />
+			seperated by , without space</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Examples:</h2>
+
+<p><a href="/admin/amourphious/">admin/amourphious/</a>&nbsp;: generates auth id &lt;id&gt; for admin names amourphious</p>
+
+<p>movies/add/?authId=&lt;id&gt;&amp;name=myMovie&amp;director=myDirector&amp;rating=8.0&amp;popularity=76.6&amp;genre=genre1,genre2</p>
+
+<p>movies/search/?name=myMovie</p>
+
+<p>movies/update/&lt;movie_id&gt;/?authId=&lt;myAuthId&gt;&amp;rating=7.5 : updates rating of movie with id &lt;movie_id&gt;</p>
+
+<p>&nbsp;</p>
